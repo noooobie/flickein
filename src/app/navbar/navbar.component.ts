@@ -28,8 +28,7 @@ export class NavbarComponent implements OnInit {
   private scrollToElement(sectionId: string): void {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' } as ScrollIntoViewOptions);
     }
   }
-
 }

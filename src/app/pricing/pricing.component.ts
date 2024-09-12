@@ -63,20 +63,20 @@ export class PricingComponent implements OnInit {
     }
   ];
 
-  toggleSection(section: any) {
+  isVisible: boolean[] = this.steps.map(() => false);
+
+  toggleSection(section: any): void {
     section.isOpen = !section.isOpen;
-    section.maxHeight = section.isOpen ? '500px' : '0px'; 
+    section.maxHeight = section.isOpen ? '500px' : '0px';
   }
 
-  isVisible = this.steps.map(() => false);
-
   @HostListener('window:scroll', [])
-  onWindowScroll() {
+  onWindowScroll(): void {
     this.checkVisibility();
   }
 
-  checkVisibility() {
-    const stepElements = document.querySelectorAll('.step');
+  checkVisibility(): void {
+    const stepElements = document.querySelectorAll<HTMLElement>('.step'); // Use type assertion for better type safety
     const windowHeight = window.innerHeight;
     const windowCenter = windowHeight / 2;
     let closestStepIndex = -1;
